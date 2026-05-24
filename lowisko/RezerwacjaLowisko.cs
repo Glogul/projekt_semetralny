@@ -20,7 +20,6 @@ class Program
     {
         WczytajDane();
 
-        // Krok 1: Powitanie
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("╔══════════════════════════════════════════╗");
@@ -29,18 +28,14 @@ class Program
         Console.ResetColor();
         Console.WriteLine();
 
-        // Krok 2 & 3: Wybór pory dnia
         bool czyDzien = WybierzPore();
 
-        // Krok 4: Wyświetl dostępność stanowisk
         WyswietlDostepnosc(czyDzien);
 
-        // Krok 5: Wybór stanowiska i liczby osób
         int wybraneStanowisko;
         int liczbaOsob;
         WybierzStanowisko(czyDzien, out wybraneStanowisko, out liczbaOsob);
 
-        // Krok 6: Podanie imienia i nazwiska
         Console.WriteLine();
         Console.Write("Podaj imię i nazwisko, aby zakończyć proces rezerwacji: ");
         string imieNazwisko = Console.ReadLine();
@@ -53,7 +48,6 @@ class Program
             imieNazwisko = Console.ReadLine();
         }
 
-        // Krok 7: Potwierdzenie rezerwacji
         Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("╔══════════════════════════════════════════════════════╗");
@@ -88,7 +82,6 @@ class Program
 
         foreach (string linia in linie)
         {
-            // Pomijaj komentarze i puste linie
             if (linia.StartsWith("#") || string.IsNullOrWhiteSpace(linia))
                 continue;
 
@@ -109,7 +102,7 @@ class Program
             }
             catch
             {
-                // Pomijaj błędne linie
+            
             }
         }
     }
@@ -172,7 +165,6 @@ class Program
 
         while (true)
         {
-            // Wybór numeru stanowiska
             Console.Write("Wybierz numer stanowiska (1-10): ");
             string inputStan = Console.ReadLine()?.Trim();
             int numerStanowiska;
@@ -205,7 +197,6 @@ class Program
                 continue;
             }
 
-            // Wybór liczby osób
             Console.Write($"Podaj liczbę osób (max {maxMiejsc}): ");
             string inputOsoby = Console.ReadLine()?.Trim();
             int liczbaOsob;
@@ -228,7 +219,6 @@ class Program
                 continue;
             }
 
-            // Wszystko OK
             wybraneNr = numerStanowiska;
             wybranaLiczba = liczbaOsob;
             break;
